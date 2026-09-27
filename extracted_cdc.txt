@@ -1,0 +1,286 @@
+Cahier des charges fonctionnel
+Plateforme professionnelle de fromagerie traditionnelle artisanale
+Périmètre
+Méthodes de fabrication artisanale issues des traditions fromagères de France, d’Espagne, d’Italie, de Suisse, de Belgique et des Pays-Bas.
+Version 1.0
+27 septembre 2026
+Décision
+GO Build sous conditions
+La plateforme peut être construite avec des contenus de démonstration. Aucune méthode opératoire réelle ne pourra être publiée avant validation professionnelle, sanitaire et réglementaire.
+1 Résumé du projet
+Le projet consiste à créer une plateforme privée qui donne aux artisans fromagers un accès simple à des méthodes traditionnelles documentées, versionnées et validées. Le site vise les producteurs fermiers, les micro-fromageries et les petites équipes disposant de moyens techniques et financiers limités.
+Le produit sera d’abord une bibliothèque professionnelle. Il ne pilotera pas les équipements et ne remplacera ni le plan de maîtrise sanitaire de l’atelier, ni les contrôles officiels, ni la qualification locale du procédé.
+2 Décisions de cadrage
+Sujet
+Décision retenue
+Audience
+Artisans fromagers, producteurs fermiers et petites fromageries
+Accès
+Privé, après vérification professionnelle manuelle
+Positionnement
+Bibliothèque pratique de méthodes traditionnelles pour petites productions
+Pays
+France, Espagne, Italie, Suisse, Belgique et Pays-Bas
+Langue du pilote
+Français
+Contenu initial
+Douze méthodes pilotes, soit deux par pays, après validation
+Échelle provisoire
+Petites productions, avec une plage cible de 20 à 200 litres à confirmer
+Lait cru
+Possible uniquement après une validation renforcée propre au protocole et au territoire
+Modèle fonctionnel
+Consultation, recherche, versionnement, impression et administration simple
+3 Objectifs et critères de réussite
+Permettre à un artisan de trouver une méthode pertinente en moins de deux minutes.
+Présenter chaque méthode dans un format lisible sur téléphone, tablette et feuille imprimée.
+Afficher clairement la version, la date, le territoire, l’auteur et le validateur de chaque méthode.
+Retirer rapidement une méthode et prévenir les utilisateurs concernés lorsqu’une correction importante intervient.
+Maintenir une interface et une exploitation financière compatibles avec de petits ateliers.
+4 Utilisateurs et rôles
+Rôle
+Droits principaux
+Restrictions
+Artisan
+Rechercher, consulter, imprimer et télécharger les méthodes actives
+Ne peut ni modifier ni publier
+Expert éditeur
+Rédiger et réviser une méthode en brouillon
+Ne peut pas approuver seul
+Validateur
+Contrôler les aspects techniques et sanitaires et demander des corrections
+Ne publie que dans son domaine de compétence
+Administrateur
+Gérer les comptes, les statuts et la publication après validation
+Toutes les actions sensibles sont journalisées
+5 Parcours principal
+L’artisan demande un accès en indiquant son entreprise, son activité et son territoire.
+L’administrateur vérifie manuellement le caractère professionnel de la demande.
+Après connexion, l’artisan accède directement au catalogue et aux filtres.
+Il ouvre une méthode et vérifie sa version, son champ d’application et ses prérequis.
+Il consulte le mode atelier ou imprime la fiche technique.
+En cas de correction ou de retrait, le site l’informe lors de sa prochaine connexion et, pour une alerte majeure, par courrier électronique.
+6 Arborescence
+Connexion et demande d’accès
+Catalogue des méthodes
+Recherche et filtres
+Fiche méthode
+Méthodes enregistrées
+Alertes et mises à jour
+Compte et informations professionnelles
+Administration des comptes et des contenus
+7 Catalogue et filtres
+Le catalogue classe les méthodes par pays, région, famille de fromage, espèce laitière, traitement du lait, durée d’affinage, difficulté, volume de référence et matériel requis.
+Famille
+Exemples de classement
+Fromages frais et lactiques
+Faisselles, lactiques affinés et spécialités fraîches
+Pâtes molles
+Croûtes fleuries, lavées ou naturelles
+Pâtes pressées
+Non cuites, semi-cuites et cuites
+Pâtes persillées
+Méthodes à développement interne de moisissures
+Fromages en saumure
+Égouttage puis conservation ou affinage en saumure
+Fromages de lactosérum
+Valorisation artisanale du lactosérum
+Spécialités régionales
+Méthodes traditionnelles ne relevant pas des catégories précédentes
+8 Contenu d’une méthode
+Chaque fiche sépare les informations descriptives, les instructions opératoires et les contrôles. Les valeurs numériques et leurs tolérances doivent provenir de sources identifiées et être validées avant publication.
+Bloc
+Informations obligatoires
+Identification
+Nom, pays, région, famille, version, statut et langue
+Champ d’application
+Types de lait, traitement, volume de référence, plage autorisée et limites d’usage
+Préparation
+Compétences, hygiène préalable, matériel indispensable et alternatives artisanales validées
+Matières
+Caractéristiques attendues du lait, intrants, dosages, stockage et traçabilité
+Fabrication
+Étapes chronologiques, durées, températures, pH, gestes, tolérances et repères sensoriels
+Finition
+Moulage, égouttage, pressage, salage, séchage, affinage et conservation
+Maîtrise sanitaire
+Dangers, mesures de maîtrise, contrôles, limites et conduite à tenir en cas d’écart
+Qualité
+Résultat attendu, rendement indicatif, défauts fréquents et vérifications initiales
+Gouvernance
+Auteur, relecteurs, validateur, sources, date d’effet, prochaine revue et historique
+9 Exigences fonctionnelles du MVP
+ID
+Fonction
+Critère
+Priorité
+F01
+Accès privé
+Un visiteur non connecté ne peut consulter aucune méthode professionnelle
+Must
+F02
+Vérification
+L’administrateur accepte ou refuse manuellement chaque demande professionnelle
+Must
+F03
+Catalogue
+L’artisan peut parcourir les méthodes par pays et famille
+Must
+F04
+Recherche
+La recherche trouve un fromage, une région, un type de lait ou une famille
+Must
+F05
+Filtres
+Les filtres peuvent être combinés et réinitialisés simplement
+Must
+F06
+Fiche atelier
+La méthode reste lisible sur un petit écran avec des étapes courtes
+Must
+F07
+Version
+La version, la date et le statut sont visibles sur écran et sur export
+Must
+F08
+Impression
+Une fiche propre peut être imprimée sans éléments de navigation
+Must
+F09
+PDF
+L’utilisateur peut télécharger la version active au format PDF
+Should
+F10
+Retrait
+Un protocole suspendu disparaît du catalogue actif et reste archivé
+Must
+F11
+Alertes
+Une correction importante déclenche une notification ciblée
+Must
+F12
+Administration
+Les contenus suivent les statuts brouillon, revue, approuvé, publié, retiré et archivé
+Must
+10 Exigences non fonctionnelles
+Accessibilité : navigation clavier, contraste suffisant, textes redimensionnables et libellés explicites.
+Performance : affichage utile en moins de trois secondes sur une connexion mobile ordinaire, sous réserve du réseau.
+Mobilité : aucun défilement horizontal sur les écrans courants et commandes adaptées au toucher.
+Faible débit : images limitées, pages légères et fiches imprimables disponibles après téléchargement.
+Disponibilité : sauvegardes régulières, restauration testée et procédure de continuité documentée.
+Confidentialité : chiffrement des échanges, séparation des rôles et secrets stockés hors du code.
+Audit : conservation des validations, publications, retraits et actions d’administration.
+11 Sécurité et protection des données
+Le pilote limite les données personnelles au nom professionnel, aux coordonnées de contact, à l’entreprise, au pays et aux journaux nécessaires à la sécurité. Les finalités, durées de conservation, sous-traitants et droits des personnes seront documentés avant l’ouverture des inscriptions.
+Mot de passe conforme aux bonnes pratiques et authentification renforcée pour les administrateurs et validateurs.
+Révocation immédiate d’un compte et revue périodique des accès sensibles.
+Protection contre les tentatives répétées, les injections et l’accès direct à un contenu non autorisé.
+Journalisation des téléchargements et des changements de statut, avec accès limité.
+12 Gouvernance des méthodes
+Une méthode réelle suit le circuit suivant avant publication.
+Brouillon > revue technique > revue sanitaire > revue réglementaire si nécessaire > approbation > publication > révision ou retrait.
+13 Profil du validateur
+Formation ou expérience démontrable en technologie laitière ou fromagère.
+Expérience récente de la production artisanale et des petites capacités d’atelier.
+Compétence en hygiène alimentaire et procédures fondées sur les principes HACCP.
+Connaissance du territoire, du type de lait et de la famille de fromage concernés.
+Déclaration des intérêts et validation limitée à son domaine de compétence.
+Engagement écrit sur la méthode de revue, la traçabilité et les délais de correction.
+14 Principes sanitaires et réglementaires
+La réglementation européenne prévoit une mise en œuvre proportionnée des procédures fondées sur les principes HACCP pour les petites entreprises et permet des adaptations destinées à préserver les méthodes traditionnelles. Cette flexibilité ne réduit pas les objectifs d’hygiène ni la responsabilité de l’exploitant.
+Les règles générales d’hygiène et les procédures fondées sur les principes HACCP relèvent notamment du règlement CE 852 2004.
+Les exigences spécifiques au lait et aux produits laitiers relèvent notamment du règlement CE 853 2004.
+La sécurité et la traçabilité alimentaires relèvent notamment du règlement CE 178 2002.
+Les appellations protégées doivent être vérifiées dans les registres officiels et dans leur cahier des charges en vigueur.
+La Suisse nécessite une analyse séparée fondée sur sa législation fédérale et, lorsque nécessaire, cantonale.
+Une méthode publiée ne vaut ni certification de l’atelier, ni validation de son plan de maîtrise sanitaire, ni autorisation d’utiliser une AOP ou une IGP.
+15 Périmètre exclu du MVP
+Pilotage de machines, capteurs ou automatisation de production
+ERP, comptabilité, stocks, achats et maintenance
+Gestion complète des lots et libération des produits
+Publication libre, forum, commentaires ou réseau social
+Application mobile native et fonctionnement intégral hors connexion
+Diagnostic automatique ou recommandations produites par intelligence artificielle
+Calcul automatique universel des dosages et des durées
+Certification d’un produit, d’un atelier ou d’une appellation
+16 Critères d’acceptation
+Un compte non validé ne peut consulter aucune méthode.
+Un artisan trouve une méthode par pays, famille et type de lait.
+Une fiche reste lisible sur téléphone, tablette et impression noir et blanc.
+Chaque méthode affiche sa version, sa date, son statut, ses sources et ses validateurs.
+Une méthode non approuvée ne peut être publiée.
+Toute révision crée une nouvelle version sans modifier silencieusement l’ancienne.
+Une méthode retirée n’apparaît plus comme active et les utilisateurs concernés sont informés.
+Les administrateurs et validateurs utilisent une authentification renforcée.
+Les tests de contrôle d’accès empêchent un utilisateur d’obtenir un contenu non autorisé.
+Les sauvegardes peuvent être restaurées selon une procédure testée.
+17 Risques et traitements
+Priorité
+Risque
+Traitement exigé
+P0
+Méthode erronée ou insuffisamment validée
+Double revue technique et sanitaire avant publication
+P0
+Version obsolète encore utilisée
+Retrait immédiat, notification et archivage non ambigu
+P0
+Confusion entre méthode et conformité locale
+Limites d’usage visibles et mentions juridiques validées
+P1
+Mauvaise adaptation à un volume ou un équipement
+Plage d’application explicite et absence de recalcul non validé
+P1
+Erreur liée au lait cru
+Validation renforcée, sources territoriales et revue microbiologique
+P1
+Usage indu d’une appellation
+Lien vers le cahier des charges et avertissement sur le droit d’usage
+P1
+Compte professionnel compromis
+Authentification renforcée pour les rôles sensibles et journalisation
+P2
+Interface trop lourde pour un petit atelier
+Tests avec cinq à dix artisans pilotes et réduction continue du contenu
+18 Plan de réalisation
+Étape
+Résultat attendu
+Condition de sortie
+1 Conception
+Architecture des écrans et modèle de méthode
+Validation du parcours par des artisans pilotes
+2 Socle privé
+Connexion, vérification des comptes et rôles
+Tests d’accès et de révocation réussis
+3 Bibliothèque
+Catalogue, recherche, filtres et fiches
+Critères F03 à F08 validés
+4 Gouvernance
+Workflow, versions, retraits et alertes
+Historique et notifications vérifiés
+5 Contenus pilotes
+Douze méthodes validées
+Validation formelle et sources complètes
+6 Pilote terrain
+Usage par cinq à dix ateliers
+Corrections prioritaires terminées
+7 Publication
+Ouverture contrôlée
+Aucun P0 ouvert et décision RESCUE GO
+19 Definition of Ready
+Le DoR est considéré comme satisfait pour construire la plateforme et utiliser des contenus de démonstration. Les éléments suivants deviennent des conditions de publication des méthodes réelles.
+Nommer le responsable éditorial, le validateur technique et le référent sanitaire.
+Confirmer la plage de volumes, les types de lait et les équipements ciblés.
+Sélectionner les douze méthodes pilotes et leurs sources.
+Faire tester le modèle de fiche par cinq à dix artisans.
+Valider les mentions de responsabilité, la politique de confidentialité et les règles AOP IGP.
+20 Décision et conditions de release
+Verdict SQUAD : GO Build. Le périmètre fonctionnel est assez précis pour concevoir et développer la plateforme.
+Verdict RESCUE : NO GO Release à ce stade. La publication de contenus opératoires exige la nomination des validateurs, la validation du corpus pilote, les tests de sécurité et l’absence de problème P0 ouvert.
+21 Sources officielles de référence
+Règlement CE 852 2004 relatif à l’hygiène des denrées alimentaires — https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32004R0852
+Communication 2022 C 355 01 sur les bonnes pratiques d’hygiène et la flexibilité HACCP — https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52022XC0916(01)
+Règlement CE 853 2004 fixant des règles spécifiques d’hygiène pour les denrées d’origine animale — https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32004R0853
+Règlement CE 178 2002 établissant les principes généraux de la législation alimentaire — https://eur-lex.europa.eu/eli/reg/2002/178/oj?locale=fr
+Registres européens des indications géographiques — https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes/geographical-indications-registers_en
+Office fédéral suisse de la sécurité alimentaire et des affaires vétérinaires, guides de bonnes pratiques — https://www.blv.admin.ch/de/leitlinien-fuer-gute-verfahrenspraxis-lebensmittelbetriebe

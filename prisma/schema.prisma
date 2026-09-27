@@ -1,0 +1,193 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ARTISAN
+  VALIDATOR
+  ADMIN
+}
+
+enum MethodStatus {
+  DRAFT
+  REVIEW_TECH
+  REVIEW_HEALTH
+  APPROVED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum StepPhase {
+  PREPARATION
+  MATURATION
+  COAGULATION
+  CURD_WORK
+  MOULDING_DRAINING
+  SALTING
+}
+
+enum CareType {
+  BRUSHING
+  WASHING
+  MORGE
+  OILING
+  TURNING
+}
+
+enum SupplierCategory {
+  RENNET_ANIMAL
+  RENNET_VEGETABLE
+  FERMENTS
+  LINEN_CLOTHS
+  MOULDS
+  WOOD_BOARDS
+  EQUIPMENT
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(ARTISAN)
+  workshopName String?
+  country      String
+  siret        String?
+  isApproved   Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Method {
+  id                    String         @id @default(cuid())
+  slug                  String         @unique
+  name                  String
+  country               String         // France, Italie, Espagne, Suisse, Belgique, Pays-Bas
+  region                String
+  family                String         // Lactique, Pâte Molle, Pâte Pressée Non Cuite, Pâte Pressée Cuite, Pâte Persillée, Pâte Filée
+  milkType              String         // Vache, Chèvre, Brebis, Bufflonne, Mixte
+  pasteurization        String         // Lait cru, Lait thermisé doux
+  referenceVolumeLiters Int            @default(50)
+  minVolumeLiters       Int            @default(20)
+  maxVolumeLiters       Int            @default(200)
+  description           String
+  history               String
+  status                MethodStatus   @default(PUBLISHED)
+  version               String         @default("1.0")
+  author                String
+  validatorTech         String
+  validatorHealth       String
+  hygieneWarning        String
+  legalDisclaimer       String
+  expectedYieldKg       Float          // Rendement indicatif en kg pour volume de réf
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  steps                 Step[]
+  ripening              RipeningParam?
+  utensils              MethodUtensil[]
+  suppliers             MethodSupplier[]
+}
+
+model Step {
+  id                     String    @id @default(cuid())
+  methodId               String
+  stepNumber             Int
+  phase                  StepPhase
+  title                  String
+  durationMinutes        Int?
+  temperatureC           Float?
+  phTarget               Float?
+  description            String
+  sensoryCue             String    // Repères sensoriels au toucher / visuel
+  criticalControlPoint   String?   // Point de maîtrise sanitaire / HACCP
+
+  method                 Method    @relation(fields: [methodId], references: [id], onDelete: Cascade)
+
+  @@index([methodId, stepNumber])
+}
+
+model RipeningParam {
+  id                     String    @id @default(cuid())
+  methodId               String    @unique
+  cellarTempMin          Float
+  cellarTempMax          Float
+  humidityMinPercent     Float
+  humidityMaxPercent     Float
+  woodType               String    // Épicéa brut non traité, etc.
+  careType               CareType
+  careFrequency          String    // ex: "2 fois par semaine", "Quotidien les 4 premières semaines"
+  careDescription        String
+  minDays                Int
+  optimalDays            Int
+  maxDays                Int
+  sensoryEvolution       String    // Évolution visuelle, olfactive et tactile de la croûte
+
+  method                 Method    @relation(fields: [methodId], references: [id], onDelete: Cascade)
+}
+
+model Utensil {
+  id                     String          @id @default(cuid())
+  slug                   String          @unique
+  name                   String
+  category               String          // "Petit outillage manuel", "Équipement d'atelier"
+  approvedMaterial       String          // Inox alimentaire, Lin, Cuivre, Épicéa brut
+  description            String
+  traditionalAlternative String?
+
+  methods                MethodUtensil[]
+}
+
+model MethodUtensil {
+  methodId  String
+  utensilId String
+  quantity  String?
+
+  method    Method  @relation(fields: [methodId], references: [id], onDelete: Cascade)
+  utensil   Utensil @relation(fields: [utensilId], references: [id], onDelete: Cascade)
+
+  @@id([methodId, utensilId])
+}
+
+model Supplier {
+  id               String           @id @default(cuid())
+  slug             String           @unique
+  name             String
+  country          String
+  region           String?
+  category         SupplierCategory
+  specialty        String
+  address          String?
+  website          String?
+  contactEmail     String?
+  phone            String?
+  description      String
+  isVerifiedCraft  Boolean          @default(true)
+
+  methods          MethodSupplier[]
+}
+
+model MethodSupplier {
+  methodId   String
+  supplierId String
+  note       String?
+
+  method     Method   @relation(fields: [methodId], references: [id], onDelete: Cascade)
+  supplier   Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@id([methodId, supplierId])
+}
+
+model GlossaryTerm {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  term       String
+  category   String   // Coagulation, Affinage, Matières, Matériel
+  definition String
+  keyTip     String?
+}
