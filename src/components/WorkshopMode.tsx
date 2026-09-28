@@ -3,18 +3,17 @@
 import { useState, useEffect } from "react";
 import { CheeseMethod, StepItem } from "@/types";
 import {
-  ChevronLeft,
-  ChevronRight,
-  CheckCircle2,
   Clock,
   Play,
   Pause,
   RotateCcw,
-  Printer,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   X,
   AlertTriangle,
-  Eye,
-  Thermometer,
+  Printer,
+  Sparkles,
 } from "lucide-react";
 
 interface WorkshopModeProps {
@@ -23,53 +22,69 @@ interface WorkshopModeProps {
 }
 
 export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
-  const [currentStepIdx, setCurrentStepIdx] = useState<number>(0);
+  const [currentStepIdx, setCurrentStepIdx] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
-  const step: StepItem = recipe.steps[currentStepIdx];
+  // Step Timer State
+  const currentStep = recipe.steps[currentStepIdx];
+  const durationSeconds = (currentStep.durationMinutes || 0) * 60;
+  const [timeLeft, setTimeLeft] = useState<number>(durationSeconds);
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
-  // Timer state
-  const initialSeconds = (step.durationMinutes || 0) * 60;
-  const [timeLeft, setTimeLeft] = useState<number>(initialSeconds);
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-
-  // Reset timer on step change
+  // Synchronize timer when step changes
   useEffect(() => {
-    setTimeLeft((step.durationMinutes || 0) * 60);
-    setIsRunning(false);
-  }, [currentStepIdx, step.durationMinutes]);
+    setTimeLeft((recipe.steps[currentStepIdx].durationMinutes || 0) * 60);
+    setIsTimerRunning(false);
+  }, [currentStepIdx, recipe.steps]);
 
-  // Timer interval
+  // Interval countdown
   useEffect(() => {
-    let timer: NodeJS.Timeout | null = null;
-    if (isRunning && timeLeft > 0) {
-      timer = setInterval(() => {
+    let interval: NodeJS.Timeout;
+    if (isTimerRunning && timeLeft > 0) {
+      interval = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-    } else if (timeLeft === 0 && isRunning) {
-      setIsRunning(false);
+    } else if (timeLeft === 0 && isTimerRunning) {
+      setIsTimerRunning(false);
+      try {
+        const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+        osc.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.6);
+      } catch {
+        // AudioContext not available or blocked
+      }
     }
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [isRunning, timeLeft]);
+    return () => clearInterval(interval);
+  }, [isTimerRunning, timeLeft]);
 
   const toggleStepCompleted = (idx: number) => {
-    setCompletedSteps((prev) =>
-      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
-    );
+    if (completedSteps.includes(idx)) {
+      setCompletedSteps(completedSteps.filter((i) => i !== idx));
+    } else {
+      setCompletedSteps([...completedSteps, idx]);
+    }
   };
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  const formatTimer = (totalSeconds: number) => {
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-terroir-950 text-white flex flex-col overflow-y-auto">
+    <div
+      style={{ backgroundColor: "#140f0c" }}
+      className="fixed inset-0 z-50 text-white flex flex-col overflow-y-auto"
+    >
       {/* Top Workshop Header */}
-      <header className="bg-terroir-900 border-b border-terroir-800 px-4 py-3 flex items-center justify-between shrink-0">
+      <header
+        style={{ backgroundColor: "#1e1713" }}
+        className="border-b border-stone-800 px-4 py-3.5 flex items-center justify-between shrink-0 shadow-md"
+      >
         <div className="flex items-center space-x-3">
           <span className="text-2xl">👨‍🍳</span>
           <div>
@@ -77,11 +92,11 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
               <h2 className="font-serif font-bold text-base sm:text-lg text-white">
                 {recipe.name}
               </h2>
-              <span className="bg-cheese-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+              <span className="bg-amber-400 text-stone-950 text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded shadow-xs">
                 Mode Atelier
               </span>
             </div>
-            <p className="text-xs text-terroir-400">
+            <p className="text-xs text-stone-300 font-medium">
               Étape {currentStepIdx + 1} sur {recipe.steps.length} • {recipe.country} ({recipe.region})
             </p>
           </div>
@@ -91,15 +106,15 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
           <button
             type="button"
             onClick={() => window.print()}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-terroir-800 hover:bg-terroir-700 text-xs font-semibold text-terroir-200 transition"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-xs font-bold text-stone-200 border border-stone-700 transition"
           >
-            <Printer className="w-4 h-4 text-cheese-400" />
+            <Printer className="w-4 h-4 text-amber-400" />
             Imprimer Fiche
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-lg bg-terroir-800 hover:bg-terroir-700 text-terroir-300 hover:text-white transition"
+            className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white border border-stone-700 transition"
             aria-label="Quitter le mode atelier"
           >
             <X className="w-5 h-5" />
@@ -108,27 +123,30 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
       </header>
 
       {/* Progress Step Bar */}
-      <div className="bg-terroir-900/60 border-b border-terroir-800/80 px-4 py-2 shrink-0 overflow-x-auto">
+      <div
+        style={{ backgroundColor: "#1c1510" }}
+        className="border-b border-stone-800 px-4 py-2.5 shrink-0 overflow-x-auto"
+      >
         <div className="flex items-center space-x-2 min-w-max">
           {recipe.steps.map((s, idx) => (
             <button
               key={s.stepNumber}
               type="button"
               onClick={() => setCurrentStepIdx(idx)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium transition ${
                 currentStepIdx === idx
-                  ? "bg-cheese-500 text-white font-bold shadow"
+                  ? "bg-amber-400 text-stone-950 font-extrabold shadow-md"
                   : completedSteps.includes(idx)
-                  ? "bg-emerald-950 text-emerald-300 border border-emerald-700/60"
-                  : "bg-terroir-800 text-terroir-400 hover:bg-terroir-700"
+                  ? "bg-emerald-950 text-emerald-200 border border-emerald-600 font-bold"
+                  : "bg-stone-800 text-stone-300 hover:bg-stone-700 border border-stone-700"
               }`}
             >
               {completedSteps.includes(idx) ? (
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               ) : (
-                <span>#{idx + 1}</span>
+                <span className="font-bold">#{idx + 1}</span>
               )}
-              <span className="truncate max-w-[130px]">{s.title}</span>
+              <span className="truncate max-w-[140px]">{s.title}</span>
             </button>
           ))}
         </div>
@@ -138,105 +156,91 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
       <main className="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-between">
         <div className="space-y-6">
           {/* Phase Badge & Step Title */}
-          <div>
-            <div className="inline-block px-3 py-1 rounded text-xs font-bold tracking-wider uppercase bg-cheese-900/60 text-cheese-300 border border-cheese-700 mb-2">
-              Phase : {step.phase}
+          <div className="space-y-2 border-b border-stone-800 pb-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-600/50">
+                Phase {currentStep.phase}
+              </span>
+              <div className="flex items-center gap-2">
+                {currentStep.temperatureC && (
+                  <span className="text-xs font-mono font-bold bg-stone-800 text-amber-300 border border-stone-700 px-2.5 py-1 rounded-md">
+                    🌡️ {currentStep.temperatureC}°C
+                  </span>
+                )}
+                {currentStep.phTarget && (
+                  <span className="text-xs font-mono font-bold bg-stone-800 text-cyan-300 border border-stone-700 px-2.5 py-1 rounded-md">
+                    🧪 pH {currentStep.phTarget}
+                  </span>
+                )}
+              </div>
             </div>
-            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-              {step.stepNumber}. {step.title}
-            </h1>
-          </div>
 
-          {/* Quick Technical Badges (T°, pH, Durée) */}
-          <div className="flex flex-wrap gap-3">
-            {step.temperatureC && (
-              <div className="flex items-center gap-1.5 bg-terroir-800/90 border border-terroir-700 px-3 py-1.5 rounded-lg text-sm font-mono text-amber-300">
-                <Thermometer className="w-4 h-4 text-amber-400" />
-                <span className="font-bold">{step.temperatureC}°C</span>
-              </div>
-            )}
-            {step.phTarget && (
-              <div className="flex items-center gap-1.5 bg-terroir-800/90 border border-terroir-700 px-3 py-1.5 rounded-lg text-sm font-mono text-cyan-300">
-                <span>pH cible :</span>
-                <span className="font-bold">{step.phTarget}</span>
-              </div>
-            )}
-            {step.durationMinutes && (
-              <div className="flex items-center gap-1.5 bg-terroir-800/90 border border-terroir-700 px-3 py-1.5 rounded-lg text-sm font-mono text-cheese-300">
-                <Clock className="w-4 h-4 text-cheese-400" />
-                <span className="font-bold">{step.durationMinutes} min</span>
-              </div>
-            )}
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white pt-1">
+              Étape {currentStep.stepNumber} : {currentStep.title}
+            </h3>
           </div>
 
           {/* Step Description */}
-          <div className="bg-terroir-900 border border-terroir-800 rounded-xl p-6 text-terroir-100 text-base sm:text-lg leading-relaxed font-sans shadow-inner">
-            {step.description}
+          <div className="text-sm sm:text-base text-stone-100 leading-relaxed font-sans bg-[#221a14] border border-stone-700/80 p-6 rounded-2xl shadow-md">
+            {currentStep.description}
           </div>
 
-          {/* Sensory Cue (Repère sensoriel paysan) */}
-          <div className="bg-amber-950/40 border-l-4 border-amber-500 rounded-r-xl p-5 text-amber-200">
-            <div className="flex items-center gap-2 font-bold text-sm text-amber-300 mb-1">
-              <Eye className="w-4 h-4" />
-              Repère sensoriel paysan (Toucher / Visuel)
-            </div>
-            <p className="text-sm sm:text-base leading-relaxed">{step.sensoryCue}</p>
-          </div>
-
-          {/* Critical Control Point (HACCP) */}
-          {step.criticalControlPoint && (
-            <div className="bg-rose-950/40 border-l-4 border-rose-500 rounded-r-xl p-5 text-rose-200">
-              <div className="flex items-center gap-2 font-bold text-sm text-rose-300 mb-1">
-                <AlertTriangle className="w-4 h-4 text-rose-400" />
-                Point de Maîtrise Sanitaire Critique (HACCP)
-              </div>
-              <p className="text-sm sm:text-base leading-relaxed">{step.criticalControlPoint}</p>
-            </div>
-          )}
-
-          {/* Interactive Workshop Timer (if duration is present) */}
-          {step.durationMinutes && step.durationMinutes > 0 && (
-            <div className="bg-terroir-900 border border-terroir-800 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Clock className="w-6 h-6 text-cheese-400" />
+          {/* Interactive Countdown Timer (if duration specified) */}
+          {durationSeconds > 0 && (
+            <div className="bg-[#261d16] border border-amber-600/40 rounded-2xl p-6 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="p-3.5 rounded-xl bg-amber-950 text-amber-400 border border-amber-700/60">
+                  <Clock className="w-8 h-8" />
+                </div>
                 <div>
-                  <div className="text-xs text-terroir-400 uppercase tracking-wider font-semibold">
-                    Chronomètre d'étape
-                  </div>
+                  <span className="text-xs text-stone-300 uppercase tracking-wider font-bold block">
+                    Minuteur d'Atelier ({currentStep.durationMinutes} min)
+                  </span>
                   <div
-                    className={`font-mono text-3xl font-bold ${
+                    className={`font-mono text-4xl sm:text-5xl font-extrabold tracking-tight ${
                       timeLeft === 0
-                        ? "text-rose-400 animate-pulse"
-                        : isRunning
-                        ? "text-emerald-400"
+                        ? "text-emerald-400 animate-pulse"
+                        : isTimerRunning
+                        ? "text-amber-400"
                         : "text-white"
                     }`}
                   >
-                    {formatTime(timeLeft)}
+                    {formatTimer(timeLeft)}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              {/* Timer Controls */}
+              <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsRunning(!isRunning)}
-                  className={`px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 transition shadow ${
-                    isRunning
-                      ? "bg-amber-600 hover:bg-amber-700 text-white"
-                      : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                  onClick={() => setIsTimerRunning(!isTimerRunning)}
+                  className={`px-5 py-3 rounded-xl font-extrabold text-sm flex items-center gap-2 shadow-lg transition ${
+                    isTimerRunning
+                      ? "bg-amber-600 hover:bg-amber-500 text-white"
+                      : "bg-amber-500 hover:bg-amber-400 text-stone-950"
                   }`}
                 >
-                  {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                  {isRunning ? "Pause" : "Démarrer"}
+                  {isTimerRunning ? (
+                    <>
+                      <Pause className="w-4 h-4 fill-current" />
+                      Pause
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4 fill-current" />
+                      Démarrer
+                    </>
+                  )}
                 </button>
+
                 <button
                   type="button"
                   onClick={() => {
-                    setIsRunning(false);
-                    setTimeLeft((step.durationMinutes || 0) * 60);
+                    setIsTimerRunning(false);
+                    setTimeLeft(durationSeconds);
                   }}
-                  className="p-2 rounded-lg bg-terroir-800 hover:bg-terroir-700 text-terroir-300 hover:text-white transition"
+                  className="p-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white border border-stone-700 transition"
                   title="Réinitialiser le chrono"
                 >
                   <RotateCcw className="w-4 h-4" />
@@ -244,15 +248,36 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
               </div>
             </div>
           )}
+
+          {/* Sensory Cue */}
+          <div className="bg-amber-950/80 border-l-4 border-amber-500 p-4 rounded-r-xl text-xs sm:text-sm text-amber-100 shadow-xs">
+            <span className="font-extrabold text-amber-300 block mb-1">
+              👁️ Repère Sensoriel & Tour de Main de l'Artisan :
+            </span>
+            {currentStep.sensoryCue}
+          </div>
+
+          {/* HACCP Alert (if defined) */}
+          {currentStep.criticalControlPoint && (
+            <div className="bg-rose-950/80 border-l-4 border-rose-500 p-4 rounded-r-xl text-xs sm:text-sm text-rose-100 shadow-xs flex items-start gap-2.5">
+              <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-extrabold text-rose-300 block mb-0.5">
+                  Point Critique Sanitaire (HACCP) :
+                </span>
+                {currentStep.criticalControlPoint}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Bottom Navigation Bar */}
-        <div className="border-t border-terroir-800 pt-6 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+        {/* Footer Navigation Bar */}
+        <div className="border-t border-stone-800 pt-6 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             type="button"
             onClick={() => setCurrentStepIdx((prev) => Math.max(0, prev - 1))}
             disabled={currentStepIdx === 0}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-terroir-800 hover:bg-terroir-700 disabled:opacity-40 disabled:cursor-not-allowed font-semibold text-sm flex items-center justify-center gap-2 transition"
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-stone-800 hover:bg-stone-700 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-sm text-stone-200 border border-stone-700 flex items-center justify-center gap-2 transition"
           >
             <ChevronLeft className="w-4 h-4" />
             Étape précédente
@@ -261,10 +286,10 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
           <button
             type="button"
             onClick={() => toggleStepCompleted(currentStepIdx)}
-            className={`w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition shadow ${
+            className={`w-full sm:w-auto px-6 py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition shadow-md ${
               completedSteps.includes(currentStepIdx)
-                ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-                : "bg-terroir-800 hover:bg-terroir-700 text-terroir-200 border border-terroir-700"
+                ? "bg-emerald-600 hover:bg-emerald-500 text-white"
+                : "bg-stone-800 hover:bg-stone-700 text-stone-100 border border-stone-700"
             }`}
           >
             <CheckCircle2 className="w-5 h-5" />
@@ -275,7 +300,7 @@ export default function WorkshopMode({ recipe, onClose }: WorkshopModeProps) {
             type="button"
             onClick={() => setCurrentStepIdx((prev) => Math.min(recipe.steps.length - 1, prev + 1))}
             disabled={currentStepIdx === recipe.steps.length - 1}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-cheese-500 hover:bg-cheese-600 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-sm text-white flex items-center justify-center gap-2 transition shadow"
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed font-extrabold text-sm text-stone-950 flex items-center justify-center gap-2 transition shadow-lg"
           >
             Étape suivante
             <ChevronRight className="w-4 h-4" />
