@@ -94,67 +94,90 @@ export default function RecipeDetailPage({ params, searchParams }: RecipePagePro
         </div>
       </div>
 
-      {/* Main Header Banner */}
-      <header className="bg-white rounded-2xl border border-stone-200 p-6 sm:p-8 shadow-sm space-y-4 print:border-none print:p-0">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold bg-stone-100 text-stone-800 border border-stone-200 px-3 py-1 rounded-full">
-            {recipe.country} ({recipe.region})
-          </span>
-          <span className="text-xs font-bold bg-amber-100 text-amber-950 border border-amber-300 px-3 py-1 rounded-full">
-            {recipe.family}
-          </span>
-          <span className="text-xs font-bold bg-emerald-50 text-emerald-950 border border-emerald-300 px-3 py-1 rounded-full">
-            {recipe.milkType} • {recipe.pasteurization}
-          </span>
-          <span className="text-xs font-mono text-stone-600 font-semibold ml-auto">
-            Version {recipe.version} • Statut : Certifié
-          </span>
-        </div>
-
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 leading-tight">
-          {recipe.name}
-        </h1>
-
-        <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-sans font-normal">
-          {recipe.description}
-        </p>
-
-        {/* History Box */}
-        <div className="bg-amber-50/70 border-l-4 border-amber-500 p-4 rounded-r-xl text-xs text-stone-800 italic">
-          <span className="font-bold not-italic text-stone-900">Histoire & Terroir : </span>
-          {recipe.history}
-        </div>
-
-        {/* Technical Key Badges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
-          <div className="bg-stone-50 border border-stone-200 p-3 rounded-xl flex items-center gap-2.5">
-            <Droplets className="w-4 h-4 text-amber-600 shrink-0" />
-            <div>
-              <span className="text-stone-600 block text-[10px] uppercase font-bold">Lait mis en œuvre</span>
-              <span className="font-bold text-stone-900">{recipe.referenceVolumeLiters} Litres</span>
-            </div>
-          </div>
-          <div className="bg-stone-50 border border-stone-200 p-3 rounded-xl flex items-center gap-2.5">
-            <Scale className="w-4 h-4 text-amber-600 shrink-0" />
-            <div>
-              <span className="text-stone-600 block text-[10px] uppercase font-bold">Rendement estimé</span>
-              <span className="font-bold text-stone-900">~{recipe.expectedYieldKg} kg</span>
-            </div>
-          </div>
-          <div className="bg-stone-50 border border-stone-200 p-3 rounded-xl flex items-center gap-2.5">
-            <Clock className="w-4 h-4 text-amber-600 shrink-0" />
-            <div>
-              <span className="text-stone-600 block text-[10px] uppercase font-bold">Affinage optimal</span>
-              <span className="font-bold text-stone-900">
-                {recipe.ripening ? `${recipe.ripening.optimalDays} jours` : "Frais (1-3j)"}
+      {/* Main Header Banner with Cheese Image Showcase */}
+      <header className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm print:border-none print:p-0">
+        <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* Photo Showcase (5 cols on md/lg) */}
+          <div className="md:col-span-5 relative h-72 md:h-auto min-h-[280px] bg-stone-100 overflow-hidden">
+            <img
+              src={recipe.image || `/images/cheeses/${recipe.slug}.jpg`}
+              alt={recipe.name}
+              className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white/95 drop-shadow">
+              <span className="font-semibold flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>{recipe.family} • {recipe.milkType}</span>
+              </span>
+              <span className="text-[11px] bg-stone-900/80 backdrop-blur-md px-2 py-0.5 rounded border border-white/20">
+                100% {recipe.pasteurization}
               </span>
             </div>
           </div>
-          <div className="bg-stone-50 border border-stone-200 p-3 rounded-xl flex items-center gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-            <div>
-              <span className="text-stone-600 block text-[10px] uppercase font-bold">Validation</span>
-              <span className="font-bold text-stone-900">Sanitaire OK</span>
+
+          {/* Details & Info (7 cols on md/lg) */}
+          <div className="md:col-span-7 p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold bg-stone-100 text-stone-800 border border-stone-200 px-3 py-1 rounded-full">
+                  {recipe.country} ({recipe.region})
+                </span>
+                <span className="text-xs font-bold bg-amber-100 text-amber-950 border border-amber-300 px-3 py-1 rounded-full">
+                  {recipe.family}
+                </span>
+                <span className="text-xs font-mono text-stone-600 font-semibold ml-auto">
+                  Version {recipe.version} • Certifié
+                </span>
+              </div>
+
+              <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 leading-tight">
+                {recipe.name}
+              </h1>
+
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans font-normal">
+                {recipe.description}
+              </p>
+
+              {/* History Box */}
+              <div className="bg-amber-50/70 border-l-4 border-amber-500 p-3.5 rounded-r-xl text-xs text-stone-800 italic">
+                <span className="font-bold not-italic text-stone-900">Histoire & Terroir : </span>
+                {recipe.history}
+              </div>
+            </div>
+
+            {/* Technical Key Badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 text-xs border-t border-stone-100">
+              <div className="bg-stone-50 border border-stone-200 p-2.5 rounded-xl flex items-center gap-2">
+                <Droplets className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <div>
+                  <span className="text-stone-500 block text-[10px] uppercase font-bold">Lait cuve</span>
+                  <span className="font-bold text-stone-900">{recipe.referenceVolumeLiters} L</span>
+                </div>
+              </div>
+              <div className="bg-stone-50 border border-stone-200 p-2.5 rounded-xl flex items-center gap-2">
+                <Scale className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <div>
+                  <span className="text-stone-500 block text-[10px] uppercase font-bold">Rendement</span>
+                  <span className="font-bold text-stone-900">~{recipe.expectedYieldKg} kg</span>
+                </div>
+              </div>
+              <div className="bg-stone-50 border border-stone-200 p-2.5 rounded-xl flex items-center gap-2">
+                <Clock className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <div>
+                  <span className="text-stone-500 block text-[10px] uppercase font-bold">Affinage</span>
+                  <span className="font-bold text-stone-900">
+                    {recipe.ripening ? `${recipe.ripening.optimalDays} j` : "Frais"}
+                  </span>
+                </div>
+              </div>
+              <div className="bg-stone-50 border border-stone-200 p-2.5 rounded-xl flex items-center gap-2">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <div>
+                  <span className="text-stone-500 block text-[10px] uppercase font-bold">HACCP</span>
+                  <span className="font-bold text-emerald-800">Conforme</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

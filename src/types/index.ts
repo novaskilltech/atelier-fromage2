@@ -81,6 +81,7 @@ export interface CheeseMethod {
   id: string;
   slug: string;
   name: string;
+  image?: string;
   country: "France" | "Italie" | "Espagne" | "Suisse" | "Belgique" | "Pays-Bas";
   region: string;
   family: "Lactique" | "Pâte Molle" | "Pâte Pressée Non Cuite" | "Pâte Pressée Cuite" | "Pâte Persillée" | "Pâte Filée";

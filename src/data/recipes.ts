@@ -5,6 +5,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "fr-crottin",
     slug: "crottin-fermier-traditionnel",
+    image: "/images/cheeses/crottin-fermier-traditionnel.jpg",
     name: "Crottin Fermier Traditionnel",
     country: "France",
     region: "Centre-Val de Loire",
@@ -99,6 +100,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "fr-saint-nectaire",
     slug: "saint-nectaire-fermier-traditionnel",
+    image: "/images/cheeses/saint-nectaire-fermier-traditionnel.jpg",
     name: "Tomme Fermière au Lait Cru (Type Saint-Nectaire)",
     country: "France",
     region: "Auvergne",
@@ -190,6 +192,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "fr-camembert",
     slug: "camembert-traditionnel-lait-cru",
+    image: "/images/cheeses/camembert-traditionnel-lait-cru.jpg",
     name: "Camembert Traditionnel au Lait Cru (Moulage 5 Passes)",
     country: "France",
     region: "Normandie",
@@ -283,6 +286,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "fr-bleu",
     slug: "bleu-artisan-auvergne",
+    image: "/images/cheeses/bleu-artisan-auvergne.jpg",
     name: "Bleu de Terroir Artisanal (Pâte Persillée)",
     country: "France",
     region: "Massif Central",
@@ -366,6 +370,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "it-caciocavallo",
     slug: "caciocavallo-fermier-traditionnel",
+    image: "/images/cheeses/caciocavallo-fermier-traditionnel.jpg",
     name: "Caciocavallo Fermier Traditionnel (Pâte Filée)",
     country: "Italie",
     region: "Campanie / Calabre",
@@ -452,6 +457,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "it-pecorino",
     slug: "pecorino-toscano-fermier",
+    image: "/images/cheeses/pecorino-toscano-fermier.jpg",
     name: "Pecorino Fermier au Lait Cru de Brebis",
     country: "Italie",
     region: "Toscane / Sardaigne",
@@ -534,6 +540,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "it-robiola",
     slug: "robiola-di-roccaverano-artisanale",
+    image: "/images/cheeses/robiola-di-roccaverano-artisanale.jpg",
     name: "Robiola di Roccaverano Artisanale",
     country: "Italie",
     region: "Piémont",
@@ -606,6 +613,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "it-gorgonzola",
     slug: "gorgonzola-artisanal-double-caille",
+    image: "/images/cheeses/gorgonzola-artisanal-double-caille.jpg",
     name: "Gorgonzola Artisanal au Double Caillé",
     country: "Italie",
     region: "Lombardie / Piémont",
@@ -682,6 +690,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "es-manchego",
     slug: "queso-manchego-artesano-fermier",
+    image: "/images/cheeses/queso-manchego-artesano-fermier.jpg",
     name: "Queso Manchego Artesano au Lait Cru de Brebis",
     country: "Espagne",
     region: "Castille-La Manche",
@@ -764,6 +773,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "es-torta-casar",
     slug: "torta-del-casar-coagulation-vegetale",
+    image: "/images/cheeses/torta-del-casar-coagulation-vegetale.jpg",
     name: "Torta del Casar Artisanale (Coagulation Végétale au Chardon)",
     country: "Espagne",
     region: "Estrémadure",
@@ -846,6 +856,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "es-cabrales",
     slug: "queso-de-cabrales-fermier",
+    image: "/images/cheeses/queso-de-cabrales-fermier.jpg",
     name: "Queso de Cabrales Fermier (Persillé de Grotte)",
     country: "Espagne",
     region: "Asturies",
@@ -911,6 +922,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "es-garrotxa",
     slug: "queso-garrotxa-artisanal",
+    image: "/images/cheeses/queso-garrotxa-artisanal.jpg",
     name: "Queso Garrotxa Artisanal au Lait Cru de Chèvre",
     country: "Espagne",
     region: "Catalogne",
@@ -976,6 +988,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "ch-gruyere",
     slug: "gruyere-d-alpage-artisanal",
+    image: "/images/cheeses/gruyere-d-alpage-artisanal.jpg",
     name: "Gruyère d'Alpage Artisanal en Chaudron de Cuivre",
     country: "Suisse",
     region: "Fribourg / Vaud",
@@ -1060,6 +1073,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "ch-tomme-vaudoise",
     slug: "tomme-vaudoise-artisanale",
+    image: "/images/cheeses/tomme-vaudoise-artisanale.jpg",
     name: "Tomme Vaudoise Artisanale au Lait Cru",
     country: "Suisse",
     region: "Vaud / Jura",
@@ -1125,6 +1139,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "ch-mutschli",
     slug: "mutschli-fermier-montagne",
+    image: "/images/cheeses/mutschli-fermier-montagne.jpg",
     name: "Mutschli Fermier de Montagne (Pâte Mi-Dure)",
     country: "Suisse",
     region: "Suisse Centrale",
@@ -1190,6 +1205,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "ch-formaggella",
     slug: "formaggella-ticinese-chevre",
+    image: "/images/cheeses/formaggella-ticinese-chevre.jpg",
     name: "Formaggella Ticinese Artisanale",
     country: "Suisse",
     region: "Tessin",
@@ -1263,6 +1279,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "be-herve",
     slug: "fromage-de-herve-artisanal",
+    image: "/images/cheeses/fromage-de-herve-artisanal.jpg",
     name: "Fromage de Herve Artisanal au Lait Cru",
     country: "Belgique",
     region: "Pays de Herve (Wallonie)",
@@ -1328,6 +1345,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "be-chevre-wallonie",
     slug: "chevre-de-wallonie-cendre",
+    image: "/images/cheeses/chevre-de-wallonie-cendre.jpg",
     name: "Chèvre de Wallonie Cendré Artisanal",
     country: "Belgique",
     region: "Ardenne / Wallonie",
@@ -1392,6 +1410,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "be-abbaye",
     slug: "fromage-d-abbaye-artisan-biere",
+    image: "/images/cheeses/fromage-d-abbaye-artisan-biere.jpg",
     name: "Fromage d'Abbaye Fermier Lavé à la Bière Artisanale",
     country: "Belgique",
     region: "Hainaut / Namur",
@@ -1458,6 +1477,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "be-maquee",
     slug: "maquee-artisanale-traditionnelle",
+    image: "/images/cheeses/maquee-artisanale-traditionnelle.jpg",
     name: "Maquée Artisanale Traditionnelle en Sac de Lin",
     country: "Belgique",
     region: "Wallonie",
@@ -1523,6 +1543,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "nl-boerenkaas",
     slug: "boerenkaas-gouda-fermier-traditionnel",
+    image: "/images/cheeses/boerenkaas-gouda-fermier-traditionnel.jpg",
     name: "Boerenkaas Authentique (Gouda Fermier au Lait Cru)",
     country: "Pays-Bas",
     region: "Hollande-Méridionale / Utrecht",
@@ -1608,6 +1629,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "nl-leidse",
     slug: "leidse-boerenkaas-cumin-fermier",
+    image: "/images/cheeses/leidse-boerenkaas-cumin-fermier.jpg",
     name: "Leidse Boerenkaas Traditionnel au Cumin",
     country: "Pays-Bas",
     region: "Leyde (Hollande-Méridionale)",
@@ -1681,6 +1703,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "nl-edam",
     slug: "boeren-edam-artisanal-boule",
+    image: "/images/cheeses/boeren-edam-artisanal-boule.jpg",
     name: "Boeren-Edam Artisanal (Petite Sphère Fermière au Lait Cru)",
     country: "Pays-Bas",
     region: "Hollande-Septentrionale",
@@ -1746,6 +1769,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
   {
     id: "nl-nagelkaas",
     slug: "friese-nagelkaas-girofle-fermier",
+    image: "/images/cheeses/friese-nagelkaas-girofle-fermier.jpg",
     name: "Friese Nagelkaas (Fromage de Frise aux Clous de Girofle)",
     country: "Pays-Bas",
     region: "Frise",
