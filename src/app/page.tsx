@@ -238,7 +238,24 @@ export default function HomePage() {
       </section>
 
       {/* Quick Direct Links Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <Link
+          href="/astuces"
+          className="bg-white p-5 rounded-xl border border-terroir-200 shadow-xs hover:border-cheese-400 hover:shadow-sm transition flex items-start gap-4 group"
+        >
+          <div className="p-3 rounded-lg bg-cheese-50 text-cheese-600 group-hover:bg-cheese-600 group-hover:text-white transition shrink-0">
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="font-serif font-bold text-sm text-terroir-900 group-hover:text-cheese-700 transition">
+              Astuces & Vidéos
+            </h3>
+            <p className="text-xs text-terroir-600 mt-1">
+              Démonstrations de salage au sel sec, moulage et tours de main de l'Institut de l'Élevage.
+            </p>
+          </div>
+        </Link>
+
         <Link
           href="/ustensiles"
           className="bg-white p-5 rounded-xl border border-terroir-200 shadow-xs hover:border-cheese-400 hover:shadow-sm transition flex items-start gap-4 group"
@@ -268,7 +285,7 @@ export default function HomePage() {
               Où se fournir (Sourcing)
             </h3>
             <p className="text-xs text-terroir-600 mt-1">
-              Carnet d'adresses d'intrants nobles : présures caillettes, fleurs de chardon sauvage, ferments.
+              Fournisseurs officiels réels : Coquard, Sacco System, Scierie Renaud, Cocinista, Novonesis.
             </p>
           </div>
         </Link>

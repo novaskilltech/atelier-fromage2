@@ -33,6 +33,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/astuces" className="hover:text-cheese-400 transition text-cheese-300 font-semibold">
+                  Astuces & Vidéos d'Atelier
+                </Link>
+              </li>
+              <li>
                 <Link href="/ustensiles" className="hover:text-cheese-400 transition">
                   Guide du Matériel & Outillage
                 </Link>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Compass, Hammer, ShoppingBag, ShieldCheck, Sparkles } from "lucide-react";
+import { BookOpen, Compass, Hammer, ShoppingBag, ShieldCheck, Sparkles, Video } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -22,7 +22,7 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium text-terroir-700">
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 text-sm font-medium text-terroir-700">
             <Link
               href="/"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
@@ -31,32 +31,39 @@ export default function Navbar() {
               Recettes (24)
             </Link>
             <Link
+              href="/astuces"
+              className="px-3 py-2 rounded-md hover:text-cheese-700 bg-cheese-50/50 text-cheese-900 font-semibold border border-cheese-200/60 transition flex items-center gap-1.5 shadow-2xs"
+            >
+              <Video className="w-4 h-4 text-cheese-600" />
+              Astuces & Vidéos
+            </Link>
+            <Link
               href="/ustensiles"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
             >
               <Hammer className="w-4 h-4 text-cheese-600" />
-              Matériel & Ustensiles
+              Matériel
             </Link>
             <Link
               href="/sourcing"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
             >
               <ShoppingBag className="w-4 h-4 text-cheese-600" />
-              Où se fournir
+              Sourcing
             </Link>
             <Link
               href="/lexique"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
             >
               <Compass className="w-4 h-4 text-cheese-600" />
-              Lexique Fromager
+              Lexique
             </Link>
             <Link
               href="/charte"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
             >
               <Sparkles className="w-4 h-4 text-cheese-600" />
-              Charte 100% Artisanal
+              Charte
             </Link>
           </nav>
 
