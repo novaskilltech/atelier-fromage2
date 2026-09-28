@@ -19,6 +19,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Thermometer,
+  Moon,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -78,30 +79,30 @@ export default function HomePage() {
   return (
     <div className="space-y-16 pb-16">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION LANDING PAGE - CONTRASTE GARANTI ET FOND SOMBRE PROFOND   */}
+      {/* 1. HERO SECTION LANDING PAGE - FOND ARTISANAL CLAIR & VISIBLE + GLASS    */}
       {/* ========================================================================= */}
       <section
-        style={{ backgroundColor: "#15100c" }}
+        style={{ backgroundColor: "#1c140e" }}
         className="relative overflow-hidden text-white rounded-3xl mx-4 sm:mx-6 lg:mx-8 shadow-2xl border border-stone-800"
       >
-        {/* Background Image with Dark Heavy Tint Overlay */}
+        {/* Background Image with Lighter Warm Ambiance */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="/images/hero-artisan-copper.jpg"
             alt="Artisan fromager chauffant son lait cru dans un grand chaudron en cuivre traditionnel avec thermomètre"
             className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
-            style={{ opacity: 0.32 }}
+            style={{ opacity: 0.58 }}
           />
-          {/* Gradients ensuring 100% readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#15100c] via-[#15100c]/90 to-[#15100c]/60 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#15100c] via-transparent to-[#15100c]/70 pointer-events-none" />
+          {/* Subtle gradient overlays letting the image shine through */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1c140e]/90 via-[#1c140e]/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1c140e] via-transparent to-[#1c140e]/40 pointer-events-none" />
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 py-16 sm:py-24 lg:py-28 flex flex-col justify-center">
-          <div className="max-w-3xl space-y-6">
+        {/* Content Container with Frosted Glass Protection */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 py-14 sm:py-20 lg:py-24 flex flex-col justify-center">
+          <div className="max-w-3xl space-y-6 bg-stone-950/65 backdrop-blur-md p-6 sm:p-10 rounded-3xl border border-amber-500/20 shadow-2xl">
             {/* Top Pill / Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-950/90 text-amber-300 border border-amber-500/60 shadow-md backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-950/90 text-amber-300 border border-amber-500/60 shadow-md">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>Charte 100% Artisanal & Fermier • Ateliers de 20 à 200 Litres</span>
             </div>
@@ -122,13 +123,21 @@ export default function HomePage() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#catalogue"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-extrabold text-sm shadow-xl hover:shadow-amber-500/30 transition transform hover:-translate-y-0.5"
               >
                 <span>Explorer les 24 Recettes</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </a>
+
+              <a
+                href="#a-propos"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-950/80 hover:bg-amber-900 text-amber-200 font-bold text-sm border border-amber-500/40 backdrop-blur-md shadow-md transition"
+              >
+                <Moon className="w-4 h-4 text-amber-400" />
+                <span>Découvrir L'Atelier & La Veillée</span>
               </a>
 
               <Link
@@ -141,20 +150,20 @@ export default function HomePage() {
             </div>
 
             {/* Key Metrics Strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-stone-800">
-              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-4 shadow-md">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-stone-800/80">
+              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-3.5 shadow-md">
                 <div className="text-2xl font-bold font-serif text-amber-400">24</div>
                 <div className="text-xs text-stone-200 font-medium">Méthodes ancestrales</div>
               </div>
-              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-4 shadow-md">
+              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-3.5 shadow-md">
                 <div className="text-2xl font-bold font-serif text-amber-400">6 Pays</div>
                 <div className="text-xs text-stone-200 font-medium">France, Italie, Suisse...</div>
               </div>
-              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-4 shadow-md">
+              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-3.5 shadow-md">
                 <div className="text-2xl font-bold font-serif text-amber-400">20 à 200 L</div>
                 <div className="text-xs text-stone-200 font-medium">Échelle micro-fromagerie</div>
               </div>
-              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-4 shadow-md">
+              <div className="bg-[#221a14]/90 backdrop-blur-md border border-stone-700/80 rounded-xl p-3.5 shadow-md">
                 <div className="text-2xl font-bold font-serif text-amber-400">0% Chimie</div>
                 <div className="text-xs text-stone-200 font-medium">Lait cru & ferments nobles</div>
               </div>
@@ -262,6 +271,107 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ========================================================================= */}
+      {/* 2.5 SECTION À PROPOS : L'ESPRIT D'ATELIER & LA VEILLÉE DU SOIR           */}
+      {/* ========================================================================= */}
+      <section
+        id="a-propos"
+        style={{ backgroundColor: "#1e1610" }}
+        className="relative overflow-hidden text-white rounded-3xl mx-4 sm:mx-6 lg:mx-8 shadow-2xl border border-amber-900/40"
+      >
+        {/* Lighter Evening Twilight Background Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            src="/images/cellar-affinage.jpg"
+            alt="Cave voûtée d'affinage traditionnel au crépuscule sur planches d'épicéa"
+            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+            style={{ opacity: 0.68 }}
+          />
+          {/* Lighter evening gradient overlay letting cellar details and wood grain show clearly */}
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-900/45 to-amber-950/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-stone-950/40 pointer-events-none" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 py-16 sm:py-20 space-y-10">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-950/90 text-amber-300 border border-amber-500/50 shadow-md backdrop-blur-md">
+              <Moon className="w-3.5 h-3.5 text-amber-400" />
+              <span>À Propos • L'Esprit d'Atelier & La Veillée du Soir</span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight drop-shadow-md">
+              Quand le Soir Tombe sur la Fruitière, <br />
+              <span className="text-amber-400">Le Silence Travaille avec le Vivant</span>
+            </h2>
+            <p className="text-stone-100 text-sm sm:text-base font-medium leading-relaxed drop-shadow max-w-2xl">
+              Entre la traite de l'aube, la chauffe au cuivre et le retournement nocturne en cave voûtée,
+              L'Atelier Fromager est né de la passion des artisans qui refusent la banalisation du goût.
+            </p>
+          </div>
+
+          {/* Three Translucent Frosted Glass Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-stone-950/70 backdrop-blur-md border border-amber-500/25 p-6 rounded-2xl shadow-xl space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                <Moon className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif font-bold text-lg text-white">La Veillée d'Affinage</h3>
+              <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-normal">
+                Après l'égouttage et le salage au sel sec, l'atelier s'apaise. À la nuit tombée, l'artisan descend
+                dans la fraîcheur de la cave. Il palpe le talon des meules, écoute le souffle de l'humidité et
+                retourne avec précaution les fromages sur les planches d'épicéa brut.
+              </p>
+            </div>
+
+            <div className="bg-stone-950/70 backdrop-blur-md border border-amber-500/25 p-6 rounded-2xl shadow-xl space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif font-bold text-lg text-white">Sanctuaire du Lait Cru</h3>
+              <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-normal">
+                Nous défendons une fromagerie vivante, sans poudres de reconstitution ni additifs de conservation.
+                Nos 24 protocoles documentent scrupuleusement la flore microbienne endogène, le respect des flores sauvages
+                et la pureté des ferments fermiers.
+              </p>
+            </div>
+
+            <div className="bg-stone-950/70 backdrop-blur-md border border-amber-500/25 p-6 rounded-2xl shadow-xl space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif font-bold text-lg text-white">Échelle Micro-Atelier</h3>
+              <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-normal">
+                Que vous traitiez 20 litres dans un chaudron familial ou 200 litres au sein d'une ferme autonome,
+                nos outils adaptent dynamiquement les doses de présure et de ferments, tout en facilitant le suivi HACCP
+                au quotidien.
+              </p>
+            </div>
+          </div>
+
+          {/* Quote & Values Banner */}
+          <div className="bg-stone-950/60 backdrop-blur-md border border-amber-500/30 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <blockquote className="italic text-amber-200 text-sm sm:text-base font-serif border-l-2 border-amber-500 pl-4 max-w-2xl">
+              « Un fromage artisanal n'est pas un produit façonné à la chaîne : c'est un terroir, une saison et le geste patient d'un artisan à la veillée. »
+            </blockquote>
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href="/charte"
+                className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md transition"
+              >
+                Lire la Charte
+              </Link>
+              <Link
+                href="/sourcing"
+                className="px-5 py-2.5 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-200 font-bold text-xs border border-stone-700 transition"
+              >
+                Fournisseurs Épicéa
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* ========================================================================= */}
       {/* 3. LES OUTILS DE L'ATELIER (INNOVATION & ERGONOMIE FERMIÈRE)                */}

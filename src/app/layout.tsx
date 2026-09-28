@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import DynamicBackground from "@/components/DynamicBackground";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -78,9 +79,10 @@ export default function RootLayout({
         <link rel="icon" href="/images/logo.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/logo.jpg" />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full flex flex-col antialiased relative">
+        <DynamicBackground />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>

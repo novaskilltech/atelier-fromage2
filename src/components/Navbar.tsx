@@ -26,11 +26,18 @@ export default function Navbar() {
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-1.5 text-sm font-medium text-terroir-700">
             <Link
-              href="/"
+              href="/#catalogue"
               className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5"
             >
               <BookOpen className="w-4 h-4 text-cheese-600" />
               Recettes (24)
+            </Link>
+            <Link
+              href="/#a-propos"
+              className="px-3 py-2 rounded-md hover:text-cheese-700 hover:bg-cheese-50 transition flex items-center gap-1.5 font-medium"
+            >
+              <Sparkles className="w-4 h-4 text-cheese-600" />
+              À Propos
             </Link>
             <Link
               href="/astuces"
