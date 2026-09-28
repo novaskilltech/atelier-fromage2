@@ -4,9 +4,9 @@
   "private": true,
   "description": "Plateforme professionnelle de fromagerie traditionnelle et artisanale",
   "scripts": {
-    "dev": "node --require ./patch-readlink.js node_modules/next/dist/bin/next dev",
+    "dev": "node --require ./patch-readlink.js node_modules/next/dist/bin/next dev -p 3001",
     "build": "node --require ./patch-readlink.js node_modules/next/dist/bin/next build",
-    "start": "node --require ./patch-readlink.js node_modules/next/dist/bin/next start",
+    "start": "node --require ./patch-readlink.js node_modules/next/dist/bin/next start -p 3001",
     "lint": "next lint",
     "test": "vitest run"
   },
