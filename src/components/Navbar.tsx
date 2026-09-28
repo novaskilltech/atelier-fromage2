@@ -8,15 +8,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-lg bg-cheese-500 text-white flex items-center justify-center font-bold shadow group-hover:bg-cheese-600 transition">
-              🧀
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="Logo L'Atelier Fromager"
+              className="w-10 h-10 rounded-full object-cover shadow-sm ring-1 ring-cheese-500/40 group-hover:scale-105 transition"
+            />
             <div>
               <span className="font-serif text-lg font-bold text-terroir-900 group-hover:text-cheese-700 transition">
-                Atelier Fromager
+                L'Atelier Fromager
               </span>
-              <span className="block text-xs text-terroir-500 font-sans uppercase tracking-wider">
-                Tradition Artisanale
+              <span className="block text-[11px] text-terroir-500 font-sans uppercase tracking-wider font-semibold">
+                Savoir-Faire Artisanal
               </span>
             </div>
           </Link>

@@ -8,9 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1 : Identité */}
           <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl">🧀</span>
-              <span className="font-serif font-bold text-lg text-white">Atelier Fromager</span>
+            <div className="flex items-center space-x-3">
+              <img
+                src="/images/logo.jpg"
+                alt="Logo L'Atelier Fromager"
+                className="w-9 h-9 rounded-full object-cover ring-1 ring-cheese-500/50"
+              />
+              <span className="font-serif font-bold text-lg text-white">L'Atelier Fromager</span>
             </div>
             <p className="text-xs text-terroir-400 leading-relaxed">
               Plateforme professionnelle de transmission des tours de main et méthodes traditionnelles
