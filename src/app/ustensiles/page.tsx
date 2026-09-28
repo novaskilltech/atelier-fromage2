@@ -22,6 +22,28 @@ export default function UtensilsPage() {
         </p>
       </div>
 
+      {/* Video Callout : Créer sa fromagerie à moindre coût (REFCA / Idele) */}
+      <div className="bg-gradient-to-r from-terroir-900 to-terroir-850 text-white rounded-2xl p-6 border border-terroir-700 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-cheese-400">
+            <span>Témoignage Vidéo d'Atelier • Projet REFCA / Idele</span>
+          </div>
+          <h3 className="font-serif font-bold text-base text-white">
+            Comment s'équiper et créer son labo fromager à moindre coût ?
+          </h3>
+          <p className="text-xs text-terroir-300">
+            Émilie Lagache explique l'utilisation de matériel d'occasion reconditionné et l'aménagement modulaire conforme aux normes sanitaires.
+          </p>
+        </div>
+        <a
+          href="/astuces"
+          className="inline-flex items-center gap-2 bg-cheese-600 hover:bg-cheese-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-xs transition shrink-0 self-start sm:self-auto"
+        >
+          <span>Visionner le tutoriel</span>
+          <span>→</span>
+        </a>
+      </div>
+
       {/* Section 1 : Petit Outillage Manuel */}
       <section className="space-y-4">
         <div className="flex items-center justify-between border-b border-terroir-200 pb-2">

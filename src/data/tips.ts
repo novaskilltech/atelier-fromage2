@@ -3,7 +3,7 @@ export interface VideoTip {
   youtubeId: string;
   title: string;
   channel: string;
-  category: "Salage" | "Moulage" | "Affinage" | "Rendement & Caillé";
+  category: "Salage" | "Moulage" | "Affinage" | "Rendement & Caillé" | "Installation & Atelier";
   duration: string;
   description: string;
   keyTakeaways: string[];
@@ -103,6 +103,21 @@ export const VIDEO_TIPS: VideoTip[] = [
       "Ne jamais ventiler directement les fromages sous peine de former une croûte plâtreuse étanche (croûtage).",
       "L'épicéa brut non traité est un réservoir vivant qui restitue l'humidité et régule la flore.",
       "Le brossage à sec élimine les acariens (cirons) et égalise le fleurissement."
+    ]
+  },
+  {
+    id: "vid-installation-atelier",
+    youtubeId: "ch4HK61JnxI",
+    title: "Créer son laboratoire et sa fromagerie fermière à moindre coût (Projet REFCA)",
+    channel: "Institut de l'Élevage (Idele) / Réseau REFCA",
+    category: "Installation & Atelier",
+    duration: "6:45",
+    description: "Retour d'expérience concret d'Émilie Lagache sur la conception d'un atelier fromager artisanal à budget maîtrisé : réhabilitation modulaire, matériel d'occasion reconditionné, agencement en marche en avant et conformité aux normes sanitaires.",
+    keyTakeaways: [
+      "Aménagement modulaire économique (ex : structures isolées ou réhabilitées) validé par les services vétérinaires (DDPP).",
+      "S'équiper en matériel d'occasion reconditionné (tables inox, moules, bassines) pour diviser par 2 à 3 l'investissement initial.",
+      "Concevoir les flux selon le principe de la marche en avant (zone propre / zone souillée) dès le premier plan.",
+      "Privilégier la rentabilité rapide avec des petits volumes (20 à 200 L) avant d'agrandir l'outil."
     ]
   }
 ];

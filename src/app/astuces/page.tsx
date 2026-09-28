@@ -24,11 +24,12 @@ const CATEGORIES = [
   "Moulage",
   "Rendement & Caillé",
   "Affinage",
+  "Installation & Atelier",
 ];
 
 export default function AstucesPage() {
   const [selectedCat, setSelectedCat] = useState("Tous");
-  const [activeVideoId, setActiveVideoId] = useState<string>("vid-moulage-individuel");
+  const [activeVideoId, setActiveVideoId] = useState<string>("vid-installation-atelier");
 
   const filteredVideos =
     selectedCat === "Tous"
@@ -63,12 +64,25 @@ export default function AstucesPage() {
         </h1>
         <p className="text-sm sm:text-base text-terroir-600 max-w-3xl leading-relaxed font-sans">
           Accédez aux démonstrations vidéo professionnelles du réseau <strong>Idele / Cap'Pradel</strong> :
-          salage au sel sec, calcul du rendement avant moulage, découpe à la harpe et conduite de cave d'affinage.
+          salage au sel sec, calcul du rendement avant moulage, création de labo fromager économique et soins d'affinage.
         </p>
 
         {/* Quick links to user suggested videos */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-terroir-100">
           <span className="text-xs font-bold text-terroir-700">Vidéos d'Atelier (Idele) :</span>
+          <button
+            type="button"
+            onClick={() => handleSelectVideo("vid-installation-atelier")}
+            className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition flex items-center gap-1.5 ${
+              activeVideoId === "vid-installation-atelier"
+                ? "bg-cheese-600 text-white border-cheese-600 font-bold"
+                : "bg-terroir-50 text-terroir-800 border-terroir-200 hover:bg-cheese-100"
+            }`}
+          >
+            <Play className="w-3 h-3" />
+            <span>1. Labo à moindre coût (ch4HK61JnxI)</span>
+          </button>
+
           <button
             type="button"
             onClick={() => handleSelectVideo("vid-moulage-individuel")}
@@ -79,7 +93,7 @@ export default function AstucesPage() {
             }`}
           >
             <Play className="w-3 h-3" />
-            <span>1. Moulage individuel (IHRfFWtdy3M)</span>
+            <span>2. Moulage individuel (IHRfFWtdy3M)</span>
           </button>
 
           <button
@@ -92,7 +106,7 @@ export default function AstucesPage() {
             }`}
           >
             <Play className="w-3 h-3" />
-            <span>2. Salage à sec (7eNphzCqSBU)</span>
+            <span>3. Salage à sec (7eNphzCqSBU)</span>
           </button>
 
           <button
@@ -105,7 +119,7 @@ export default function AstucesPage() {
             }`}
           >
             <Play className="w-3 h-3" />
-            <span>3. Rendement & Moules (kHEUtQGLsTE)</span>
+            <span>4. Rendement & Moules (kHEUtQGLsTE)</span>
           </button>
         </div>
       </div>
