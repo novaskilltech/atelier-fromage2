@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AlertTriangle, ShieldCheck } from "lucide-react";
+import VisitCounter from "@/components/VisitCounter";
 
 export default function Footer() {
   return (
@@ -90,8 +91,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-terroir-800 text-center text-xs text-terroir-500">
-          © 2026 Atelier Fromager — Réservé aux professionnels du secteur laitier et fermier. Données traitées conformément au RGPD (minimisation stricte).
+        {/* Dynamic Visit Counter Section */}
+        <div className="mt-10 pt-8 border-t border-terroir-800">
+          <div className="max-w-md mx-auto">
+            <VisitCounter />
+          </div>
+        </div>
+
+        {/* Copyright notice */}
+        <div className="mt-8 pt-6 border-t border-terroir-800/60 text-center text-xs text-terroir-400 space-y-1">
+          <div className="font-semibold text-terroir-200">
+            Copyright © 2026 novaskilltech — L'Atelier Fromager. Tous droits réservés.
+          </div>
+          <div className="text-[11px] text-terroir-500">
+            Plateforme réservée aux artisans et professionnels du secteur laitier et fermier. Données traitées conformément au RGPD (minimisation stricte).
+          </div>
         </div>
       </div>
     </footer>
