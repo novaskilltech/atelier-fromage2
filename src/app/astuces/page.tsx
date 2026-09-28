@@ -28,7 +28,7 @@ const CATEGORIES = [
 
 export default function AstucesPage() {
   const [selectedCat, setSelectedCat] = useState("Tous");
-  const [activeVideoId, setActiveVideoId] = useState<string>("vid-salage-idele");
+  const [activeVideoId, setActiveVideoId] = useState<string>("vid-moulage-individuel");
 
   const filteredVideos =
     selectedCat === "Tous"
@@ -68,7 +68,20 @@ export default function AstucesPage() {
 
         {/* Quick links to user suggested videos */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-terroir-100">
-          <span className="text-xs font-bold text-terroir-700">Vidéos clés :</span>
+          <span className="text-xs font-bold text-terroir-700">Vidéos d'Atelier (Idele) :</span>
+          <button
+            type="button"
+            onClick={() => handleSelectVideo("vid-moulage-individuel")}
+            className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition flex items-center gap-1.5 ${
+              activeVideoId === "vid-moulage-individuel"
+                ? "bg-cheese-600 text-white border-cheese-600 font-bold"
+                : "bg-terroir-50 text-terroir-800 border-terroir-200 hover:bg-cheese-100"
+            }`}
+          >
+            <Play className="w-3 h-3" />
+            <span>1. Moulage individuel (IHRfFWtdy3M)</span>
+          </button>
+
           <button
             type="button"
             onClick={() => handleSelectVideo("vid-salage-idele")}
@@ -79,7 +92,7 @@ export default function AstucesPage() {
             }`}
           >
             <Play className="w-3 h-3" />
-            <span>1. Salage à sec (7eNphzCqSBU)</span>
+            <span>2. Salage à sec (7eNphzCqSBU)</span>
           </button>
 
           <button
@@ -92,7 +105,7 @@ export default function AstucesPage() {
             }`}
           >
             <Play className="w-3 h-3" />
-            <span>2. Rendement & Moulage (kHEUtQGLsTE)</span>
+            <span>3. Rendement & Moules (kHEUtQGLsTE)</span>
           </button>
         </div>
       </div>
