@@ -31,7 +31,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pur non raffiné", quantity: "60 g", notes: "Pour salage à sec manuel" }
     ],
     utensilIds: ["u-louche", "u-moules-crottin", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-bioprox", "sup-kadvice"],
+    supplierIds: ["sup-coquard", "sup-novonesis", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -125,7 +125,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer gros", quantity: "250 g", notes: "Salage en moule ou saumure" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -217,7 +217,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel fin de mer", quantity: "120 g", notes: "Salage manuel" }
     ],
     utensilIds: ["u-louche", "u-moules-camembert", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-bioprox", "sup-kadvice"],
+    supplierIds: ["sup-coquard", "sup-novonesis", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -309,7 +309,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer gros", quantity: "220 g", notes: "Salage progressif à sec" }
     ],
     utensilIds: ["u-harpe", "u-aiguille-piquage", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-bioprox", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-novonesis", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -393,7 +393,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "3 kg" }
     ],
     utensilIds: ["u-harpe", "u-presse-levier"],
-    supplierIds: ["sup-clerici", "sup-kadvice"],
+    supplierIds: ["sup-clerici", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -478,7 +478,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Huile d'olive vierge extra et marc de raisin", quantity: "100 mL", notes: "Pour soin de croûte" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-scierie-jura"],
+    supplierIds: ["sup-clerici", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -559,7 +559,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel fin de mer", quantity: "50 g" }
     ],
     utensilIds: ["u-louche", "u-moules-crottin", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-kadvice"],
+    supplierIds: ["sup-clerici", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -633,7 +633,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer fin", quantity: "240 g" }
     ],
     utensilIds: ["u-harpe", "u-aiguille-piquage", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-bioprox", "sup-scierie-jura"],
+    supplierIds: ["sup-clerici", "sup-novonesis", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -708,7 +708,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Huile d'olive vierge extra", quantity: "150 mL", notes: "Soin de croûte" }
     ],
     utensilIds: ["u-harpe", "u-moules-manchego", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-clerici", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -789,7 +789,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel fin de mer", quantity: "100 g" }
     ],
     utensilIds: ["u-louche", "u-toile-lin", "u-planches-epicea"],
-    supplierIds: ["sup-cardunculus", "sup-vosges-lin"],
+    supplierIds: ["sup-cardo-cocinista", "sup-lin-vosges"],
     steps: [
       {
         stepNumber: 1,
@@ -872,7 +872,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer brut", quantity: "200 g" }
     ],
     utensilIds: ["u-harpe", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -936,7 +936,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "2 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-clerici", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1002,7 +1002,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour morge et saumure", quantity: "4 kg" }
     ],
     utensilIds: ["u-chaudron-cuivre", "u-harpe", "u-poche", "u-toile-lin", "u-presse-levier", "u-planches-epicea", "u-brosses-tampico"],
-    supplierIds: ["sup-cuivrerie-alpes", "sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-aef-jacquier", "sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1086,7 +1086,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer fin", quantity: "60 g" }
     ],
     utensilIds: ["u-louche", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-kadvice"],
+    supplierIds: ["sup-coquard", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -1151,7 +1151,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour bain de saumure", quantity: "2 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1215,7 +1215,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer", quantity: "150 g" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-planches-epicea"],
-    supplierIds: ["sup-clerici", "sup-scierie-jura"],
+    supplierIds: ["sup-clerici", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1289,7 +1289,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Eau tiède et sel marin pour lavages", quantity: "Q.S." }
     ],
     utensilIds: ["u-harpe", "u-brosses-tampico", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-kadvice", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-coquard", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1353,7 +1353,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel fin mélangé à 2% de charbon végétal médicinal", quantity: "60 g" }
     ],
     utensilIds: ["u-louche", "u-moules-crottin", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-kadvice"],
+    supplierIds: ["sup-coquard", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -1419,7 +1419,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "3 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea", "u-brosses-tampico"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1483,7 +1483,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Présure naturelle liquide", quantity: "0.5 mL" }
     ],
     utensilIds: ["u-poche", "u-toile-lin"],
-    supplierIds: ["sup-vosges-lin", "sup-abel"],
+    supplierIds: ["sup-lin-vosges", "sup-coquard"],
     steps: [
       {
         stepNumber: 1,
@@ -1550,7 +1550,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pur pour saumure", quantity: "5 kg" }
     ],
     utensilIds: ["u-harpe", "u-moules-gouda", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-kadvice", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-coquard", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1634,7 +1634,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "4 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1707,7 +1707,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "2 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
@@ -1773,7 +1773,7 @@ export const CHEESE_RECIPES: CheeseMethod[] = [
       { name: "Sel de mer pour saumure", quantity: "3 kg" }
     ],
     utensilIds: ["u-harpe", "u-toile-lin", "u-presse-levier", "u-planches-epicea"],
-    supplierIds: ["sup-abel", "sup-vosges-lin", "sup-scierie-jura"],
+    supplierIds: ["sup-coquard", "sup-lin-vosges", "sup-scierie-renaud"],
     steps: [
       {
         stepNumber: 1,
