@@ -28,6 +28,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+scratch/
+*-original.jpg
 
 # typescript
 *.tsbuildinfo
@@ -36,3 +38,5 @@ next-env.d.ts
 # SQLite database
 *.db
 *.db-journal
+
+.vercel
