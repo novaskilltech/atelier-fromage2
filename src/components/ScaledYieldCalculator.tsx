@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { CheeseMethod } from "@/types";
-import { Scale, RefreshCw } from "lucide-react";
+import { Scale, RefreshCw, Video, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 interface ScaledYieldCalculatorProps {
   recipe: CheeseMethod;
@@ -19,8 +20,8 @@ export default function ScaledYieldCalculator({ recipe }: ScaledYieldCalculatorP
   );
 
   return (
-    <div className="bg-cheese-50/70 border border-cheese-200 rounded-xl p-6 shadow-sm">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+    <div className="bg-cheese-50/70 border border-cheese-200 rounded-xl p-6 shadow-sm space-y-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h4 className="font-serif font-bold text-base text-terroir-900 flex items-center gap-2">
             <Scale className="w-5 h-5 text-cheese-600" />
@@ -88,7 +89,7 @@ export default function ScaledYieldCalculator({ recipe }: ScaledYieldCalculatorP
       </div>
 
       {/* Dynamically Scaled Ingredients */}
-      <div className="mt-6 border-t border-cheese-200 pt-4">
+      <div className="border-t border-cheese-200 pt-4">
         <h5 className="text-xs font-bold uppercase tracking-wider text-terroir-700 mb-3">
           Ingrédients adaptés pour {liters} L de cuve
         </h5>
@@ -118,6 +119,23 @@ export default function ScaledYieldCalculator({ recipe }: ScaledYieldCalculatorP
             );
           })}
         </div>
+      </div>
+
+      {/* Video Callout to Idele Yield Video */}
+      <div className="p-3 bg-amber-50/90 border border-amber-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+        <div className="flex items-center gap-2 text-amber-950 font-medium">
+          <Video className="w-4 h-4 text-cheese-600 shrink-0" />
+          <span>
+            <strong>Tuto Idele :</strong> Comment calibrer vos moules à l'avance selon le rendement fromager ?
+          </span>
+        </div>
+        <Link
+          href="/astuces"
+          className="font-bold text-cheese-800 hover:text-cheese-900 underline flex items-center gap-1 shrink-0"
+        >
+          <span>Voir la vidéo Idele</span>
+          <ExternalLink className="w-3 h-3" />
+        </Link>
       </div>
     </div>
   );
